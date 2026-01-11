@@ -2,23 +2,29 @@ import tkinter as tk
 from calculator import calculator
 
 cal = calculator()
-cal.set_a(1)
-cal.set_b(3)
+cal.a = None
+cal.b = None
 
 window = tk.Tk()
 window.title("계산기")
 
 window.geometry("500x650")
 
-label = tk.Label(window, text="안녕하세요", fg="black" )
-label.pack()
+label_frame = tk.Frame(window)
+label_frame.pack(side="top", pady=20)
 
-setted_a = tk.Label(window,  text="a", fg="black" )
-setted_a.pack(side = "top")
 
-setted_b = tk.Label(window, text="b", fg="black")
-setted_b.pack(side = "top")
-#label 가로 배치
+setted_a = tk.Label(label_frame,  text="a", fg="black" )
+setted_a.pack(side="left", padx = 10)
+
+divider = tk.Label(label_frame, text=" ")
+divider.pack(side="left")
+
+setted_b = tk.Label(label_frame, text="b", fg="black")
+setted_b.pack(side="left", padx=10)
+
+label = tk.Label(label_frame, text="result", fg="black")
+label.pack(side="left", padx=10)
 
 def on_click():
     cal.add() # 계산기 인스턴스의 값 변경
@@ -51,5 +57,6 @@ for i in range(10):
                     command=lambda i=i: set_num(i))
     but.pack()
     button_list.append(but)
+
 
 window.mainloop()

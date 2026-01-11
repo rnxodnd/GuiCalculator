@@ -1,4 +1,4 @@
-import calculator
+from calculator import calculator
 
 def main():
     cal = calculator()
@@ -8,3 +8,6 @@ def main():
     cal.set_b(b)
     cal.add()
     print(cal.get_result())
+
+if __name__ == '__main__':
+    main()
