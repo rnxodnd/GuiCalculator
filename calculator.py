@@ -5,6 +5,7 @@
 class calculator:
     def __init__(self):
         self.a = 0
+        self.op = "+"
         self.b = 0
         self.result = 0
 
@@ -29,17 +30,37 @@ class calculator:
     def set_b(self, b):
         self.b = b
 
+    def calculate_result(self):
+        if self.op is None:
+            self.op = "+"
+
+        if self.op == "+":
+            self.add()
+        elif self.op == "-":
+            self.minus()
+        elif self.op == "*":
+            self.mul()
+        elif self.op =="/":
+            self.div()
+
+
+
+
+    def set_op(self, op):
+        self.op = op
+
 
 
 def main():
     cal = calculator()
     a = int(input())
     b = int(input())
+    op = input()
     cal.set_a(a)
     cal.set_b(b)
-    cal.add()
+    cal.set_op(op)
+    cal.calculate_result()
     print(cal.get_result())
-
     
 if __name__ == '__main__':
     main()

@@ -4,11 +4,11 @@ from calculator import calculator
 cal = calculator()
 cal.a = None
 cal.b = None
-op = None
+cal.op = None
 
 window = tk.Tk()
 window.title("계산기")
-window.geometry("500x500")
+window.geometry("550x500")
 
 # ===== 상단 표시 영역 =====
 label_frame = tk.Frame(window)
@@ -17,7 +17,7 @@ label_frame.pack(side="top", pady=20)
 setted_a = tk.Label(label_frame, text="a", fg="black")
 setted_a.pack(side="left", padx=10)
 
-divider = tk.Label(label_frame, text=" ")
+divider = tk.Label(label_frame, text="+")
 divider.pack(side="left")
 
 setted_b = tk.Label(label_frame, text="b", fg="black")
@@ -27,43 +27,23 @@ label = tk.Label(label_frame, text="result", fg="black")
 label.pack(side="left", padx=10)
 
 # ===== 기능 =====
-def on_click():
-    global op
-    if op is None:
-        op = "+"
-
-    if op == "+":
-        cal.add()
-    elif op == "-":
-        cal.minus()
-    elif op == "*":
-        cal.mul()
-    elif op =="/":
-        cal.div()
-
-    new_value = cal.get_result()
-    label.config(text=new_value)
-
-    print(f"a={cal.a}, b={cal.b}, res={cal.result}")
-
-    # 계산 후 a,b 초기화
+# 계산 후 a,b 초기화
+def reset():
     cal.a = None
     cal.b = None
-    op = None
+    cal.op = None
     setted_a.config(text="a")
     setted_b.config(text="b")
     divider.config(text = " ")
 
 def set_op(new_op: str):
-    global op
-    op = new_op
-    divider.config(text=f"{op}")
+    cal.op = new_op
+    divider.config(text=f"{cal.op}")
 
 def reset_all():
-    global op 
     cal.a = None
     cal.b = None
-    op = None
+    cal.op = None
     if hasattr(cal, "result"):
         cal.result = None
 

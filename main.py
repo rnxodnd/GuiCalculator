@@ -7,6 +7,9 @@ def main():
     cal.set_a(a)
     cal.set_b(b)
     cal.add()
+    cal.minus()
+    cal.mul()
+    cal.div()
     print(cal.get_result())
 
 if __name__ == '__main__':
